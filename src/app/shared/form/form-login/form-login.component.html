@@ -17,6 +17,6 @@
   </mat-dialog-content>
     <mat-dialog-actions align="end">
       <button mat-raised-button color="accent" type="button" (click)="onCancel()">Cancel</button>
-      <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid" (click)="onCancel()">Save</button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid" (click)="onSubmit(form.value)">Save</button>
     </mat-dialog-actions>
 </form>

@@ -16,6 +16,10 @@ import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { DialogSignInComponent } from './shared/dialog/dialog-sign-in/dialog-sign-in.component';
 import { FormSignInComponent } from './shared/form/form-sign-in/form-sign-in.component';
+import {HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { ConnexionComponent } from './login/connexion/connexion.component';
+import { InscriptionComponent } from './login/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +29,15 @@ import { FormSignInComponent } from './shared/form/form-sign-in/form-sign-in.com
     FormLoginComponent,
     DialogSignInComponent,
     FormSignInComponent,
+    HomeComponent,
+    ConnexionComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

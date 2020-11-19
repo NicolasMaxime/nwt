@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-form-login',
@@ -9,10 +10,12 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class FormLoginComponent implements OnInit {
 
   private _cancel$: EventEmitter<void>;
+  private _submit$: EventEmitter<User>;
   private _form: FormGroup;
 
   constructor() {
     this._cancel$ = new EventEmitter<void>();
+    this._submit$ = new EventEmitter<User>();
     this._form = this._buildForm();
   }
 
@@ -25,12 +28,21 @@ export class FormLoginComponent implements OnInit {
   }
 
   onCancel(): void{
-    console.log('ok');
     this._cancel$.emit();
+  }
+
+  @Output('save')
+  get submit$(): EventEmitter<User>{
+    return this._submit$;
   }
 
   get form(): FormGroup{
     return this._form;
+  }
+
+  onSubmit(user: User): void{
+    user.token = '';
+    this._submit$.emit(user);
   }
 
   private _buildForm(): FormGroup {

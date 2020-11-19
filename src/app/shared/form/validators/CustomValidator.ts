@@ -2,7 +2,7 @@ import {AbstractControl, FormGroup, ValidationErrors} from '@angular/forms';
 
 export class CustomValidator{
   static passValidator(form: FormGroup): ValidationErrors | null {
-    let pass = form.get('password');
+    let pass = form.get('pass');
     let verifPass = form.get('verifPassword');
     return pass === verifPass ? {passValidator: true} : null;
   }
