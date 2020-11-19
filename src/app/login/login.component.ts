@@ -45,22 +45,30 @@ export class LoginComponent implements OnInit {
 
   showDialogConnexion(): void {
     this._dialogStatusConnexion = 'active';
+    this._dialogStatusInscription = 'active';
     this._loginDialog = this._dialog.open(DialogLoginComponent, {
       width: '500px',
       disableClose: true
     });
 
-    this._loginDialog.afterClosed().subscribe( _ => this._dialogStatusConnexion = 'inactive');
+    this._loginDialog.afterClosed().subscribe( _ => {
+      this._dialogStatusConnexion = 'inactive';
+      this._dialogStatusInscription = 'inactive';
+    });
   }
 
   showDialogInscription(): void {
     this._dialogStatusInscription = 'active';
+    this._dialogStatusConnexion = 'active';
     this._signInDialog = this._dialog.open(DialogSignInComponent, {
       width: '500px',
       disableClose: true
     });
 
-    this._signInDialog.afterClosed().subscribe( _ => this._dialogStatusInscription = 'inactive');
+    this._signInDialog.afterClosed().subscribe( _ => {
+      this._dialogStatusInscription = 'inactive';
+      this._dialogStatusConnexion = 'inactive';
+    });
   }
 
   disconnect(): void {

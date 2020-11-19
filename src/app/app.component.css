@@ -1,4 +1,10 @@
 .title-center{
   flex: 1 1 auto;
-  text-align:center;
+}
+
+.banner {
+  width: 100%;
+  background-image: url(../assets/banners.jpg);
+  height: 20%;
+  background-position: center;
 }
