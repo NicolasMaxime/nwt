@@ -14,13 +14,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { DialogSignInComponent } from './shared/dialog/dialog-sign-in/dialog-sign-in.component';
+import { FormSignInComponent } from './shared/form/form-sign-in/form-sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DialogLoginComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    DialogSignInComponent,
+    FormSignInComponent,
   ],
   imports: [
     BrowserModule,

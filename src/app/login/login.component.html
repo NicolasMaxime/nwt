@@ -1,1 +1,3 @@
-<button mat-raised-button color="accent"  *ngIf="dialogStatus === 'inactive'" (click)="showDialog()">Connexion</button>
+<button mat-raised-button color="accent" *ngIf="dialogStatusConnexion === 'inactive' && !isConnected" (click)="showDialogConnexion()">Connexion</button>
+<button mat-raised-button color="accent" *ngIf="dialogStatusInscription === 'inactive' && !isConnected" (click)="showDialogInscription()">Inscription</button>
+<button mat-raised-button color="accent" *ngIf="isConnected" (click)="disconnect()">Déconnexion</button>

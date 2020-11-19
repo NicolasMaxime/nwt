@@ -1,0 +1,8 @@
+.full-width {
+  display: block;
+  text-align: center;
+}
+
+mat-label{
+  color: white;
+}
