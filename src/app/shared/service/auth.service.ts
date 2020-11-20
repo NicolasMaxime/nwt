@@ -12,14 +12,13 @@ import {filter, map, mergeMap, tap} from 'rxjs/operators';
 export class AuthService {
 
   private _user: Observable<User>;
-  private _isConnected: boolean;
   private _userSubject: BehaviorSubject<User>;
   private _backendUserURL: any;
+  private _isConnected: boolean;
 
   constructor(private _http: HttpClient) {
     this._userSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('user')));
     this._user = this._userSubject.asObservable();
-    this._isConnected = false;
     this._backendUserURL = {};
     let tmp = `${environment.backendUser.protocol}://${environment.backendUser.host}`;
 
@@ -39,28 +38,24 @@ export class AuthService {
         filter(_ => !!_),
         map(_ => {
         sessionStorage.setItem('user', JSON.stringify(_));
+        this._isConnected = true;
         return _;
       }),
     );
   }
 
-  get connected(): boolean{
-    if (this._userSubject != null){
-      if (this._userSubject.value && this._userSubject.value.token !== '') {
-        return true;
-      }
-    }
-    return false;
-  }
-
   logout(): void {
-    location.reload();
     sessionStorage.removeItem('user');
+    this._isConnected = false;
     this._userSubject.next(null);
   }
 
   get userValue(): User{
     return this._userSubject.value;
+  }
+
+  get connected(): boolean{
+    return this._isConnected;
   }
 
   create(user: User): Observable<User>{

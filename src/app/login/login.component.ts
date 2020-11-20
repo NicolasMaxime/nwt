@@ -5,6 +5,7 @@ import {DialogSignInComponent} from '../shared/dialog/dialog-sign-in/dialog-sign
 import {filter, map} from 'rxjs/operators';
 import {User} from '../shared/interfaces/user.interface';
 import {AuthService} from '../shared/service/auth.service';
+import {NavigationEnd, Router, RouterEvent} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +15,22 @@ import {AuthService} from '../shared/service/auth.service';
 export class LoginComponent implements OnInit {
 
   private _connected: boolean;
-  constructor(private _auth: AuthService) {
+
+  constructor(private router: Router, private _auth: AuthService) {
+    router.events.pipe(
+      filter((events: RouterEvent) => events instanceof NavigationEnd),
+    ).subscribe((val) => {
+      if (val.url === 'LoginPage Url') { // Fill with your loginPage Url (eg. /tabs/tab1)
+        location.reload(); // Refresh your form
+      }
+    });
   }
 
   ngOnInit(): void {
-    this._connected = this._auth.connected;
   }
 
   get connected(): boolean{
+    this._connected = this._auth.connected;
     return this._connected;
   }
 
