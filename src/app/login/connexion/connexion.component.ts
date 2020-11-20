@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogLoginComponent} from '../../shared/dialog/dialog-login/dialog-login.component';
-import {filter, map, mergeMap} from 'rxjs/operators';
+import {filter, map, mergeMap, tap} from 'rxjs/operators';
 import {AuthService} from '../../shared/service/auth.service';
 import {Router} from '@angular/router';
 import {User} from '../../shared/interfaces/user.interface';
@@ -32,7 +32,7 @@ export class ConnexionComponent implements OnInit {
     this._loginDialog.afterClosed()
       .pipe(
         filter(_ => !!_),
-        mergeMap(_ => this._auth.login(_))
+        mergeMap(_ => this._auth.login(_)),
     )
     .subscribe(
       () => this._router.navigate(['/']),

@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogSignInComponent} from '../../shared/dialog/dialog-sign-in/dialog-sign-in.component';
 import {AuthService} from '../../shared/service/auth.service';
 import {Router} from '@angular/router';
+import {find, map, mergeMap, tap} from 'rxjs/operators';
+import {User} from '../../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-inscription',
@@ -28,8 +30,16 @@ export class InscriptionComponent implements OnInit {
       disableClose: true
     });
 
-    this._signInDialog.afterClosed().subscribe(
-      () => undefined,
+    this._signInDialog.afterClosed()
+      .pipe(
+        map(_ => {
+          _.token = '';
+          return _;
+        }),
+        mergeMap((_: User) => this._auth.create(_))
+      )
+      .subscribe(
+        () => this._router.navigate(['home']),
       () => this._router.navigate(['home']),
       () => this._router.navigate(['home'])
     );

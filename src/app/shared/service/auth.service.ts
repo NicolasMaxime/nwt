@@ -1,9 +1,10 @@
+/* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../interfaces/user.interface';
 import {environment} from '../../../environments/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {filter, map, mergeMap} from 'rxjs/operators';
+import {filter, map, mergeMap, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,15 @@ export class AuthService {
 
   get userValue(): User{
     return this._userSubject.value;
+  }
+
+  create(user: User): Observable<User>{
+    return this._http.post<User>(this._backendUserURL.createUser, user, { headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '127.0.0.1',
+      })}).pipe(
+        mergeMap(_ => this.login(_))
+    );
   }
 
   get user(): Observable<User>{

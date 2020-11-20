@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
+import {User} from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-dialog-sign-in',
@@ -17,8 +18,8 @@ export class DialogSignInComponent implements OnInit {
     this._dialogRef.close();
   }
 
-  onSave(): void {
-    this._dialogRef.close();
+  onSave(user: User): void {
+    this._dialogRef.close(user);
   }
 
 }

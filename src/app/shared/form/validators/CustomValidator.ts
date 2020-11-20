@@ -1,13 +1,14 @@
 import {AbstractControl, FormGroup, ValidationErrors} from '@angular/forms';
 
 export class CustomValidator{
-  static passValidator(form: FormGroup): ValidationErrors | null {
-    let pass = form.get('pass');
-    let verifPass = form.get('verifPassword');
-    return pass === verifPass ? {passValidator: true} : null;
+  static passValidator(control: AbstractControl): ValidationErrors | null {
+    let pass: string = control.get('password').value;
+    let verifPass: string = control.get('verifPassword').value;
+    return pass === verifPass ? null : {passValidator: true};
   }
 
   static emailValidator(control: AbstractControl): ValidationErrors | null {
-    return /((\w|\d)(.(\w|\d))?)+@((\w|\d)+([-]|[.])?)\.\w{2,5}$/
+    return /((\w|\d)(.(\w|\d))?)+@((\w|\d)+([-]|[.])?)\.\w{2,5}$/.test(control.value)?
+      {emailValidator: true} : null;
   }
 }
