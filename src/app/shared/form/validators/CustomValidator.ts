@@ -1,6 +1,10 @@
 import {AbstractControl, FormGroup, ValidationErrors} from '@angular/forms';
 
 export class CustomValidator{
+  /**
+   * Valid password and its verification
+   * @param control
+   */
   static passValidator(control: AbstractControl): ValidationErrors | null {
     let pass: string = control.get('password').value;
     let verifPass: string = control.get('verifPassword').value;

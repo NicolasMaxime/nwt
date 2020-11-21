@@ -1,7 +1,7 @@
 /* tslint:disable:variable-name */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {User} from '../interfaces/user.interface';
+import {UserAuth} from '../interfaces/userAuth.interface';
 import {environment} from '../../../environments/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {filter, map, mergeMap, tap} from 'rxjs/operators';
@@ -11,30 +11,29 @@ import {filter, map, mergeMap, tap} from 'rxjs/operators';
 })
 export class AuthService {
 
-  private _user: Observable<User>;
-  private _userSubject: BehaviorSubject<User>;
-  private _backendUserURL: any;
+  private _user: Observable<UserAuth>;
+  private _userSubject: BehaviorSubject<UserAuth>;
+  private _backendAuthURL: any;
   private _isConnected: boolean;
 
   constructor(private _http: HttpClient) {
-    this._userSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('user')));
+    this._userSubject = new BehaviorSubject<UserAuth>(JSON.parse(sessionStorage.getItem('user')));
     this._user = this._userSubject.asObservable();
-    this._backendUserURL = {};
-    let tmp = `${environment.backendUser.protocol}://${environment.backendUser.host}`;
+    this._backendAuthURL = {};
+    let tmp = `${environment.backend.protocol}://${environment.backend.host}`;
 
-    if (environment.backendUser.port){
-      tmp += `:${environment.backendUser.port}`;
+    if (environment.backend.port){
+      tmp += `:${environment.backend.port}`;
     }
-    Object.keys(environment.backendUser.endpoints).forEach(x => this._backendUserURL[x] = `${tmp}${environment.backendUser.endpoints[x]}`);
-    console.log(this._backendUserURL);
+    Object.keys(environment.backend.authEndpoints).forEach(x => this._backendAuthURL[x] = `${tmp}${environment.backend.authEndpoints[x]}`);
   }
 
   /**
    * trying to log
    * @param user
    */
-  login(user: User): Observable<User>{
-    return this._http.post<User>(this._backendUserURL.verify, user, {headers: new HttpHeaders(
+  login(user: UserAuth): Observable<UserAuth>{
+    return this._http.post<UserAuth>(this._backendAuthURL.verify, user, {headers: new HttpHeaders(
         {
           'Access-Control-Allow-Origin' : '127.0.0.1',
         })})
@@ -48,17 +47,28 @@ export class AuthService {
     );
   }
 
+  /**
+   * Logging out : Remove sessionStorage's Item
+   */
   logout(): void {
     sessionStorage.removeItem('user');
     this._isConnected = false;
     this._userSubject.next(null);
   }
 
-  get userValue(): User{
+  /**
+   * The user's data
+   */
+  get userValue(): UserAuth{
     return this._userSubject.value;
   }
 
+
+  /**
+   * Tell if connected or not
+   */
   get connected(): boolean{
+    console.log(this._userSubject.value);
     if (this._isConnected) {
       return this._isConnected;
     }
@@ -70,16 +80,17 @@ export class AuthService {
     }
   }
 
-  create(user: User): Observable<User>{
-    return this._http.post<User>(this._backendUserURL.createUser, user, { headers: new HttpHeaders({
+  /**
+   *  Set a header for cors
+   *  then Post request to subscribe
+   * @param user
+   */
+  create(user: UserAuth): Observable<UserAuth>{
+    return this._http.post<UserAuth>(this._backendAuthURL.createUser, user, { headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : '127.0.0.1',
       })}).pipe(
         mergeMap(_ => this.login(_))
     );
-  }
-
-  get user(): Observable<User>{
-    return this._user;
   }
 }

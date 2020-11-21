@@ -1,0 +1,39 @@
+.menu {
+  margin-left: 30%;
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  background-image: url(../../assets/banners.jpg);
+  background-size: 700px;
+  background-position: center;
+}
+
+.title{
+  margin-top: 2%;
+  text-align: center;
+}
+
+.tableMenu {
+  margin-top: 3%;
+  margin-left: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+td{
+  width: 30%;
+  height: 30%;
+}
+
+.configuration {
+  background-image: url(../../assets/configuration.png);
+}
+
+h2{
+  font-family: 'Roboto', sans-serif;
+  color: brown;
+  display: block;
+  text-align: center;
+  font-weight: 900;
+
+}

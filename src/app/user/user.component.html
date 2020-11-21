@@ -1,0 +1,32 @@
+<app-head-bar></app-head-bar>
+<h2 class="title">Bienvenue {{login}}</h2>
+<table class="tableMenu">
+  <tr>
+    <td>
+      <button mat-icon-button class="menu"></button>
+      <h2 class="titleTD">Rechercher</h2>
+    </td>
+    <td>
+      <button mat-icon-button class="menu"></button>
+      <h2 class="titleTD">Options de profil</h2>
+    </td>
+    <td>
+      <button mat-icon-button class="menu" [routerLink]="['/home']"></button>
+      <h2 class="titleTD">Retourner à l'Accueil</h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button mat-icon-button class="menu"></button>
+      <h2 class="titleTD">Vos favoris</h2>
+    </td>
+    <td>
+      <button mat-icon-button class="menu"></button>
+      <h2 class="titleTD">Construire un ordinateur</h2>
+    </td>
+    <td>
+        <button mat-icon-button class="menu"></button>
+        <h2 class="titleTD">Configuration</h2>
+    </td>
+  </tr>
+</table>

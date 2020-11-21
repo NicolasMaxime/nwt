@@ -4,13 +4,16 @@
 
 export const environment = {
   production: false,
-  backendUser: {
+  backend: {
     protocol: 'http',
     host: '0.0.0.0',
     port: '3000',
-    endpoints: {
+    authEndpoints: {
       verify: '/login/verify',
       createUser: '/login/create'
+    },
+    userEndpoints: {
+      getOne: '/user/:login',
     }
   }
 };
