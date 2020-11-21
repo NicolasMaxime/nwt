@@ -35,9 +35,9 @@ export class ConnexionComponent implements OnInit {
         mergeMap(_ => this._auth.login(_)),
     )
     .subscribe(
-      () => this._router.navigate(['/']),
-      () => this._router.navigate(['/']),
-      () => this._router.navigate(['/']),
+      () => this._router.navigate(['/home']),
+      () => this._router.navigate(['/home']),
+      () => this._router.navigate(['/home']),
       );
   }
 }

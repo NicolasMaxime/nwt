@@ -29,6 +29,10 @@ export class AuthService {
     console.log(this._backendUserURL);
   }
 
+  /**
+   * trying to log
+   * @param user
+   */
   login(user: User): Observable<User>{
     return this._http.post<User>(this._backendUserURL.verify, user, {headers: new HttpHeaders(
         {
@@ -55,7 +59,15 @@ export class AuthService {
   }
 
   get connected(): boolean{
-    return this._isConnected;
+    if (this._isConnected) {
+      return this._isConnected;
+    }
+    else if (this.userValue != null && this.userValue.token !== ''){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   create(user: User): Observable<User>{
