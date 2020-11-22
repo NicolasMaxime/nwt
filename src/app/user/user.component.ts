@@ -10,13 +10,10 @@ import {Router} from '@angular/router';
 })
 export class UserComponent implements OnInit {
   private _user: UserAuth;
-  constructor(private _auth: AuthService, private _router: Router) {}
-
-  get login(): string{
-    return this._user.login;
+  constructor(private _auth: AuthService, private _router: Router) {
   }
 
-  ngOnInit(): void {
-    this._user = this._auth.userValue;
-    }
+
+
+  ngOnInit(): void {}
 }

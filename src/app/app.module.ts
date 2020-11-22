@@ -24,6 +24,7 @@ import {JwtInterceptor} from './shared/interceptor/jwt.interceptor';
 import { HeadBarComponent } from './head-bar/head-bar.component';
 import { UserComponent } from './user/user.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     InscriptionComponent,
     HeadBarComponent,
     UserComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
