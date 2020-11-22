@@ -1,10 +1,10 @@
+
 .menu {
   margin-left: 30%;
   width: 150px;
   height: 150px;
   font-size: 100px;
-  background-image: url(../../assets/banners.jpg);
-  background-size: 700px;
+  background-size: 210px;
   background-position: center;
 }
 
@@ -26,7 +26,7 @@ td{
 }
 
 .configuration {
-  background-image: url(../../assets/configuration.png);
+  background-image: url(../../assets/ICON-CONFIG.jpg);
 }
 
 h2{
@@ -35,5 +35,24 @@ h2{
   display: block;
   text-align: center;
   font-weight: 900;
+}
 
+.recherche{
+  background-image: url(../../assets/ICON-RECHERCHE.jpg);
+}
+
+.accueil{
+  background-image: url(../../assets/ICON-ACCUEIL.jpg);
+}
+
+.build{
+  background-image: url(../../assets/ICON-CONSTRUCTION.jpg);
+}
+
+.profil{
+  background-image: url(../../assets/ICON-PROFIL.jpg);
+}
+
+.followed{
+  background-image: url(../../assets/ICON-ORDI-SUIVI.jpg);
 }

@@ -23,6 +23,7 @@ import { InscriptionComponent } from './head-bar/login/inscription/inscription.c
 import {JwtInterceptor} from './shared/interceptor/jwt.interceptor';
 import { HeadBarComponent } from './head-bar/head-bar.component';
 import { UserComponent } from './user/user.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { UserComponent } from './user/user.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   providers: [    {
       provide: HTTP_INTERCEPTORS,

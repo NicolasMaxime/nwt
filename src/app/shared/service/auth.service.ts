@@ -13,19 +13,19 @@ export class AuthService {
 
   private _user: Observable<UserAuth>;
   private _userSubject: BehaviorSubject<UserAuth>;
-  private _backendAuthURL: any;
+  private _backendURL: any;
   private _isConnected: boolean;
 
   constructor(private _http: HttpClient) {
     this._userSubject = new BehaviorSubject<UserAuth>(JSON.parse(sessionStorage.getItem('user')));
     this._user = this._userSubject.asObservable();
-    this._backendAuthURL = {};
+    this._backendURL = {};
     let tmp = `${environment.backend.protocol}://${environment.backend.host}`;
 
     if (environment.backend.port){
       tmp += `:${environment.backend.port}`;
     }
-    Object.keys(environment.backend.authEndpoints).forEach(x => this._backendAuthURL[x] = `${tmp}${environment.backend.authEndpoints[x]}`);
+    Object.keys(environment.backend.endpoints).forEach(x => this._backendURL[x] = `${tmp}${environment.backend.endpoints[x]}`);
   }
 
   /**
@@ -33,7 +33,7 @@ export class AuthService {
    * @param user
    */
   login(user: UserAuth): Observable<UserAuth>{
-    return this._http.post<UserAuth>(this._backendAuthURL.verify, user, {headers: new HttpHeaders(
+    return this._http.post<UserAuth>(this._backendURL.verify, user, {headers: new HttpHeaders(
         {
           'Access-Control-Allow-Origin' : '127.0.0.1',
         })})
@@ -68,7 +68,6 @@ export class AuthService {
    * Tell if connected or not
    */
   get connected(): boolean{
-    console.log(this._userSubject.value);
     if (this._isConnected) {
       return this._isConnected;
     }
@@ -86,7 +85,7 @@ export class AuthService {
    * @param user
    */
   create(user: UserAuth): Observable<UserAuth>{
-    return this._http.post<UserAuth>(this._backendAuthURL.createUser, user, { headers: new HttpHeaders({
+    return this._http.post<UserAuth>(this._backendURL.createUser, user, { headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : '127.0.0.1',
       })}).pipe(

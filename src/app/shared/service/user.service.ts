@@ -9,7 +9,7 @@ import {User} from '../interfaces/user.interface';
   providedIn: 'root'
 })
 export class UserService {
-  private _backendUserURL: any;
+  private _backendURL: any;
 
   /**
    * Constructor for LoginService
@@ -21,7 +21,7 @@ export class UserService {
     if (environment.backend.port){
       tmp += `:${environment.backend.port}`;
     }
-    Object.keys(environment.backend.userEndpoints).forEach(x => this._backendUserURL[x] = `${tmp}${environment.backend.userEndpoints[x]}`);
+    Object.keys(environment.backend.endpoints).forEach(x => this._backendURL[x] = `${tmp}${environment.backend.endpoints[x]}`);
   }
 
   /**
@@ -29,7 +29,7 @@ export class UserService {
    * @param login
    */
   getOne(login: string): Observable<User>{
-    return this._http.get<User>(this._backendUserURL.getOne.replace(':login', login) , {headers: new HttpHeaders(
+    return this._http.get<User>(this._backendURL.getOne.replace(':login', login) , {headers: new HttpHeaders(
         {
           'Access-Control-Allow-Origin' : '127.0.0.1',
         })});

@@ -8,13 +8,11 @@ export const environment = {
     protocol: 'http',
     host: '0.0.0.0',
     port: '3000',
-    authEndpoints: {
-      verify: '/login/verify',
-      createUser: '/login/create'
-    },
-    userEndpoints: {
+    endpoints: {
+      verify: '/user/verify',
+      createUser: '/user/create',
       getOne: '/user/:login',
-    }
+    },
   }
 };
 
