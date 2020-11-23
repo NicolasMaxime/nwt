@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {ConnexionComponent} from './login/connexion/connexion.component';
 import {InscriptionComponent} from './login/inscription/inscription.component';
-import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
-import {AuthGuard} from './shared/guards/auth.guard';
+import {AdminComponent} from './admin/admin.component';
+import {RoleGuardService} from './shared/guards/role-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},

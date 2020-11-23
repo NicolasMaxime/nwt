@@ -4,7 +4,6 @@ import {DialogLoginComponent} from '../../shared/dialog/dialog-login/dialog-logi
 import {filter, map, mergeMap, tap} from 'rxjs/operators';
 import {AuthService} from '../../shared/service/auth.service';
 import {Router} from '@angular/router';
-import {UserAuth} from '../../shared/interfaces/userAuth.interface';
 
 @Component({
   selector: 'app-connexion',
@@ -50,7 +49,11 @@ export class ConnexionComponent implements OnInit {
     .subscribe(
       () => undefined,
       () => this._router.navigate(['/home']),
-      () => this._router.navigate(['/user'])
-      );
+      () => {
+        // @ts-ignore
+        const isAdmin = decode(JSON.parse(sessionStorage.user).token).admin;
+        this._router.navigate( isAdmin ? ['/admin'] : ['/user']);
+      }
+    );
   }
 }

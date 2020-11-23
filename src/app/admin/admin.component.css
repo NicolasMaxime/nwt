@@ -1,0 +1,58 @@
+
+.menu {
+  margin-left: 30%;
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  background-size: 210px;
+  background-position: center;
+}
+
+.title{
+  margin-top: 2%;
+  text-align: center;
+}
+
+.tableMenu {
+  margin-top: 3%;
+  margin-left: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+td{
+  width: 30%;
+  height: 30%;
+}
+
+.configuration {
+  background-image: url(src/assets/ICON-CONFIG.jpg);
+}
+
+h2{
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  display: block;
+  text-align: center;
+  font-weight: 900;
+}
+
+.recherche{
+  background-image: url(src/assets/ICON-RECHERCHE.jpg);
+}
+
+.accueil{
+  background-image: url(src/assets/ICON-ACCUEIL.jpg);
+}
+
+.build{
+  background-image: url(src/assets/ICON-CONSTRUCTION.jpg);
+}
+
+.profil{
+  background-image: url(src/assets/ICON-PROFIL.jpg);
+}
+
+.followed{
+  background-image: url(src/assets/ICON-FAVORI.jpg);
+}

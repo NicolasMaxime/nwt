@@ -29,6 +29,8 @@ import { ComputerCardComponent } from './shared/card/computer-card/computer-card
 import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatMenuModule} from "@angular/material/menu";
+import { AdminComponent } from './admin/admin.component';
+import {RoleGuardService} from './shared/guards/role-guard.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import {MatMenuModule} from "@angular/material/menu";
     NavigationComponent,
     ComputerComponent,
     ComputerCardComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import {MatMenuModule} from "@angular/material/menu";
       useClass: JwtInterceptor,
       multi: true
     },
+    RoleGuardService,
   ],
   bootstrap: [AppComponent]
 })
