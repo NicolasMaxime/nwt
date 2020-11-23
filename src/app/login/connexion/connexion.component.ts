@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogLoginComponent} from '../../../shared/dialog/dialog-login/dialog-login.component';
+import {DialogLoginComponent} from '../../shared/dialog/dialog-login/dialog-login.component';
 import {filter, map, mergeMap, tap} from 'rxjs/operators';
-import {AuthService} from '../../../shared/service/auth.service';
+import {AuthService} from '../../shared/service/auth.service';
 import {Router} from '@angular/router';
-import {UserAuth} from '../../../shared/interfaces/userAuth.interface';
+import {UserAuth} from '../../shared/interfaces/userAuth.interface';
 
 @Component({
   selector: 'app-connexion',

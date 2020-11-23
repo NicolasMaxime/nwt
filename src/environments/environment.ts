@@ -13,6 +13,10 @@ export const environment = {
       createUser: '/user/create',
       getOne: '/user/:login',
     },
+    endpointsConfig: {
+      getAll: '/configuration/all',
+      getOne: '/configuration/:id',
+    },
   }
 };
 

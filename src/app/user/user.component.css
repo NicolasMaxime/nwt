@@ -26,33 +26,33 @@ td{
 }
 
 .configuration {
-  background-image: url(../../assets/ICON-CONFIG.jpg);
+  background-image: url(src/assets/ICON-CONFIG.jpg);
 }
 
 h2{
   font-family: 'Roboto', sans-serif;
-  color: brown;
+  color: black;
   display: block;
   text-align: center;
   font-weight: 900;
 }
 
 .recherche{
-  background-image: url(../../assets/ICON-RECHERCHE.jpg);
+  background-image: url(src/assets/ICON-RECHERCHE.jpg);
 }
 
 .accueil{
-  background-image: url(../../assets/ICON-ACCUEIL.jpg);
+  background-image: url(src/assets/ICON-ACCUEIL.jpg);
 }
 
 .build{
-  background-image: url(../../assets/ICON-CONSTRUCTION.jpg);
+  background-image: url(src/assets/ICON-CONSTRUCTION.jpg);
 }
 
 .profil{
-  background-image: url(../../assets/ICON-PROFIL.jpg);
+  background-image: url(src/assets/ICON-PROFIL.jpg);
 }
 
 .followed{
-  background-image: url(../../assets/ICON-ORDI-SUIVI.jpg);
+  background-image: url(src/assets/ICON-FAVORI.jpg);
 }

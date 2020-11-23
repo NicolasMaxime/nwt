@@ -36,7 +36,8 @@ export class AuthService {
     return this._http.post<UserAuth>(this._backendURL.verify, user, {headers: new HttpHeaders(
         {
           'Access-Control-Allow-Origin' : '127.0.0.1',
-        })})
+          }
+        )})
       .pipe(
         filter(_ => !!_),
         map(_ => {

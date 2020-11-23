@@ -1,3 +1,22 @@
-.profilebutton{
-  margin-left: 12%;
+.MenuButton {
+  background-color: #2a373f;
+  background-image: url("src/assets/TROIS-POINT.jpg");
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
+  font-size: 60px;
+  background-size: 85px;
+  background-position: center;
+}
+
+::ng-deep .menu{
+  background-color: #2a373f;
+}
+
+.MenuButton:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 10px);
+  box-shadow: 0px 1px 0px 0px;
 }

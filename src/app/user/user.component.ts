@@ -14,6 +14,10 @@ export class UserComponent implements OnInit {
   }
 
 
+  get name(){
+    return "Maxime"
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

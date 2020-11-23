@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogSignInComponent} from '../../../shared/dialog/dialog-sign-in/dialog-sign-in.component';
-import {AuthService} from '../../../shared/service/auth.service';
+import {DialogSignInComponent} from '../../shared/dialog/dialog-sign-in/dialog-sign-in.component';
+import {AuthService} from '../../shared/service/auth.service';
 import {Router} from '@angular/router';
-import {find, map, mergeMap, tap} from 'rxjs/operators';
-import {UserAuth} from '../../../shared/interfaces/userAuth.interface';
+import {filter, find, map, mergeMap, tap} from 'rxjs/operators';
+import {UserAuth} from '../../shared/interfaces/userAuth.interface';
 
 @Component({
   selector: 'app-inscription',
@@ -42,14 +42,13 @@ export class InscriptionComponent implements OnInit {
 
     this._signInDialog.afterClosed()
       .pipe(
+        filter(_ => !!_),
         mergeMap((_: UserAuth) => this._auth.create(_))
       )
       .subscribe(
-        () => {
-          this._router.navigate(['/user']);
-        },
-() => this._router.navigate(['/home']),
-      () => this._router.navigate(['/home'])
+        () => this._router.navigate(['/user']),
+        () => this._router.navigate(['/home']),
+        () => this._router.navigate(['/home'])
     );
   }
 }

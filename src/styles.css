@@ -3,6 +3,7 @@
 html, body { height: 100%; }
 
 html{
-  background-image: url("./assets/Maxime-Nicolas_sw_fond.jpg");
+  background-image: url("src/assets/Maxime-Nicolas_sw_fond.jpg");
+  background-size: 100%;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

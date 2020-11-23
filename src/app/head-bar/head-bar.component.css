@@ -5,7 +5,7 @@
 
 .banner {
   width: 100%;
-  background-image: url(../../assets/banners.jpg);
+  background-image: url(src/assets/banners.jpg);
   height: 20%;
   background-position: center;
 }

@@ -1,7 +1,0 @@
-<a *ngIf="!connected" [routerLink]="['/connexion']">
-  <button mat-raised-button color="accent">Connexion</button>
-</a>
-<a *ngIf="!connected" [routerLink]="['/inscription']">
-  <button mat-raised-button color="accent">Inscription</button>
-</a>
-<button mat-raised-button color="accent" *ngIf="connected" (click)="disconnect()">Déconnexion</button>

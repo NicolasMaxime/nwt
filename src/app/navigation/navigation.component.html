@@ -1,3 +1,20 @@
-<button *ngIf="connected()" class="profilebutton" matTooltip="Go to your profile" mat-fab  [routerLink]="['/user']">
-  <mat-icon>person</mat-icon>
+<button mat-icon-button color="primary" class="MenuButton" [matMenuTriggerFor]="menu" >
 </button>
+<div>
+<mat-menu #menu="matMenu" class="menu">
+  <button mat-menu-item *ngIf="!connected()"  [routerLink]="['/connexion']">
+    <span>Connexion</span>
+  </button>
+  <button mat-menu-item *ngIf="!connected()" [routerLink]="['/inscription']">
+    <span>Inscription</span>
+  </button>
+  <button mat-menu-item *ngIf="connected()" class="profilebutton" matTooltip="Go to your profile" [routerLink]="['/user']">
+    <mat-icon>person</mat-icon>
+    <mat-label>Dashboard</mat-label>
+  </button>
+  <button mat-menu-item *ngIf="connected()" class="profilebutton" (click)="disconnect()">
+    <mat-icon>login</mat-icon>
+    <mat-label>Logout</mat-label>
+  </button>
+</mat-menu>
+</div>

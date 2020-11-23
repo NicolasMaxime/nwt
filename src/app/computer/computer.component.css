@@ -1,0 +1,27 @@
+section {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 60%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+h2{
+  font-family: 'Roboto', sans-serif;
+  color: brown;
+  display: block;
+  text-align: center;
+  font-weight: 900;
+}
+
+.computer-paginator{
+  position: fixed;
+  width: 66%;
+  bottom: 10%;
+  background: #2a373f;
+  color: white;
+}
+

@@ -1,0 +1,34 @@
+<mat-card class="computer-card">
+  <mat-card-title-group>
+    <img mat-card-md-image src="{{ computer.photo }}">
+    <mat-card-title>
+        <span>{{ computer.name }}</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+        Proposed by &nbsp;:&nbsp; Author
+    </mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
+    <div class="contact-info">
+      Graphical card&nbsp;:&nbsp; <a><strong>{{computer.graphic_card}}</strong></a>
+    </div>
+    <div class="contact-info">
+      Processor&nbsp;:&nbsp;<a><strong>{{computer.processor}}</strong></a>
+    </div>
+    <div class="contact-info">
+      Ram&nbsp;:&nbsp;<a><strong>{{computer.ram}}</strong></a>
+    </div>
+    <div class="buttons-info">
+      <a mat-button title="Locate" href="javascript:void(0);">
+        <mat-icon>remove_red_eye</mat-icon>
+      </a>
+      <a mat-button title="Edit">
+        <mat-icon>favorite</mat-icon>
+      </a>
+      <a mat-button title="Edit">
+        <mat-icon>start</mat-icon>
+      </a>
+    </div>
+  </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,7 @@
+<section>
+    <app-configuration-card [computer]="computer" *ngFor="let computer of toDisplay"></app-configuration-card>
+  <mat-paginator  class="computer-paginator" [length]="computers.length" [pageSize]="pageSize" (page)="pageEvent($event)">
+  </mat-paginator>
+</section>
+
+
