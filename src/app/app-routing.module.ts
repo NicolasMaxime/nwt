@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'connexion', component: ConnexionComponent },
   {path: 'inscription', component: InscriptionComponent},
-  {path: 'user', component: UserComponent}
+  {path: 'user', component: UserComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [RoleGuardService]}
 ];
 
 @NgModule({
