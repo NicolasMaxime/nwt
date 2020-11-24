@@ -51,7 +51,7 @@ export class ConnexionComponent implements OnInit {
       () => this._router.navigate(['/home']),
       () => {
         // @ts-ignore
-          const isAdmin = decode(JSON.parse(sessionStorage.user).token).admin;
+          const isAdmin = JSON.parse(sessionStorage.user).admin;
           this._router.navigate(isAdmin ? ['/admin'] : ['/user']).then(() => window.location.reload());
       }
     );

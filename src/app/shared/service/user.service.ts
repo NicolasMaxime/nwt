@@ -31,8 +31,7 @@ export class UserService {
   private _option() : HttpHeaders{
     return new HttpHeaders(
         {
-          'Access-Control-Allow-Origin' : '127.0.0.1',
-          'Content-Type': 'application/json'
+          'Access-Control-Allow-Origin' : '127.0.0.1'
         })
   }
 
