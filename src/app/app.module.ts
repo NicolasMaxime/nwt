@@ -31,6 +31,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatMenuModule} from "@angular/material/menu";
 import { AdminComponent } from './admin/admin.component';
 import {RoleGuardService} from './shared/guards/role-guard.service';
+import { ConfigurationProfileComponent } from './configuration-profile/configuration-profile.component';
+import { DialogConfirmComponent } from './shared/dialog/dialog-confirm/dialog-confirm.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {RoleGuardService} from './shared/guards/role-guard.service';
     ComputerComponent,
     ComputerCardComponent,
     AdminComponent,
+    ConfigurationProfileComponent,
+    DialogConfirmComponent,
   ],
   imports: [
     BrowserModule,

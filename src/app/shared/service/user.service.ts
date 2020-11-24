@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
 import {User} from '../interfaces/user.interface';
 
 @Injectable({
@@ -16,6 +15,7 @@ export class UserService {
    * @param _http
    */
   constructor(private _http: HttpClient) {
+    this._backendURL = {};
     let tmp = `${environment.backend.protocol}://${environment.backend.host}`;
 
     if (environment.backend.port){
@@ -24,15 +24,27 @@ export class UserService {
     Object.keys(environment.backend.endpoints).forEach(x => this._backendURL[x] = `${tmp}${environment.backend.endpoints[x]}`);
   }
 
+  private _option() : HttpHeaders{
+    return new HttpHeaders(
+        {
+          'Access-Control-Allow-Origin' : '127.0.0.1',
+          'Content-Type': 'application/json'
+        })
+  }
+
   /**
    * Get a user with his login
    * @param login
    */
   getOne(login: string): Observable<User>{
-    return this._http.get<User>(this._backendURL.getOne.replace(':login', login) , {headers: new HttpHeaders(
-        {
-          'Access-Control-Allow-Origin' : '127.0.0.1',
-        })});
+    return this._http.get<User>(this._backendURL.getOne.replace(':login', login) , {headers: this._option()});
   }
 
+  update(value: User, login: string): Observable<any> {
+    return this._http.put<User>(this._backendURL.getOne.replace(':login', login), value, {headers: this._option()});
+  }
+
+  delete(login: string) {
+    return this._http.delete<User>(this._backendURL.getOne.replace(':login', login), {headers: this._option()})
+  }
 }

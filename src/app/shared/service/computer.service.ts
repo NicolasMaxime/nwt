@@ -13,15 +13,15 @@ export class ComputerService {
   private _backendUrlConfig: any;
 
   constructor(private _http : HttpClient) {
-    this._backendUrlConfig = {};
-    let tmp = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend.port){
-      tmp += `:${environment.backend.port}`;
-    }
-    Object.keys(environment.backend.endpointsConfig).forEach(
-      x => this._backendUrlConfig[x] = `${tmp}${environment.backend.endpointsConfig[x]}`
-    )
-    console.log(this._backendUrlConfig);
+      this._backendUrlConfig = {};
+
+      let tmp = `${environment.backend.protocol}://${environment.backend.host}`;
+      if (environment.backend.port){
+        tmp += `:${environment.backend.port}`;
+      }
+      Object.keys(environment.backend.endpointsConfig).forEach(
+        x => this._backendUrlConfig[x] = `${tmp}${environment.backend.endpointsConfig[x]}`
+      )
   }
 
   getAll(): Observable<Computer[]>{

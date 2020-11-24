@@ -17,11 +17,10 @@ export class ComputerComponent implements OnInit {
   private _position: number;
   private _pageSize: number;
 
-  constructor(private _computerService: ComputerService,
-              private changeDetectorRefs: ChangeDetectorRef) {
+  constructor(private _computerService: ComputerService) {
     this._position = 0;
     this._pageSize = 6;
-    this._toDisplay = new MatTableDataSource<Computer[]>()
+    this._toDisplay = new MatTableDataSource<Computer[]>();
   }
 
   ngOnInit(): void {
@@ -55,10 +54,10 @@ export class ComputerComponent implements OnInit {
 
   private _makeDisplay(): Computer[]{
     let start = this._position * this.pageSize;
-    let ret = []
+    let ret = [];
     for (let i = 0; i != this._pageSize; i++){
       if (this._computers[start]) {
-        ret.push(this._computers[start])
+        ret.push(this._computers[start]);
         start = start + 1;
       }
     }

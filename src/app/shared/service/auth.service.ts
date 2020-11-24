@@ -1,5 +1,5 @@
 /* tslint:disable:variable-name */
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserAuth} from '../interfaces/userAuth.interface';
 import {environment} from '../../../environments/environment';
@@ -16,9 +16,13 @@ export class AuthService {
   private _backendURL: any;
   private _isConnected: boolean;
 
+  @Output('name')
+  userName: EventEmitter<UserAuth> = new EventEmitter<UserAuth>();
+
   constructor(private _http: HttpClient) {
     this._userSubject = new BehaviorSubject<UserAuth>(JSON.parse(sessionStorage.getItem('user')));
     this._user = this._userSubject.asObservable();
+    this.userName = new EventEmitter<UserAuth>();
     this._backendURL = {};
     let tmp = `${environment.backend.protocol}://${environment.backend.host}`;
 
@@ -33,6 +37,7 @@ export class AuthService {
    * @param user
    */
   login(user: UserAuth): Observable<UserAuth>{
+    this.userName.emit(user);
     return this._http.post<UserAuth>(this._backendURL.verify, user, {headers: new HttpHeaders(
         {
           'Access-Control-Allow-Origin' : '127.0.0.1',

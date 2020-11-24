@@ -1,0 +1,32 @@
+<app-head-bar></app-head-bar>
+  <section>
+    <mat-card class="container">
+      <form [formGroup]="form">
+        <mat-card-header>
+          <mat-card-title>{{user.login}}</mat-card-title>
+        </mat-card-header>
+        <hr>
+        <mat-form-field>
+          <mat-label>Firstname</mat-label>
+          <input matInput [placeholder]="user.firstname" formControlName="firstname" name="firstname">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Lastname</mat-label>
+          <input matInput [placeholder]="user.lastname" formControlName="lastname" name="lastname">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label >email</mat-label>
+          <input matInput [placeholder]="user.email" formControlName="email" name="email">
+          <mat-error *ngIf="form.get('email').hasError('email')">
+            L'adresse email doit être valide.
+          </mat-error>
+        </mat-form-field>
+        <section class="buttonGroup">
+          <button mat-raised-button class="deleteButton" color="warn" (click)="deleteAccount()">Delete Account</button>
+          <button mat-raised-button color="accent" type="button" (click)="cancel()">Cancel</button>
+          <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid" (click)="submit(form.value)">Save</button>
+        </section>
+      </form>
+    </mat-card>
+</section>
+

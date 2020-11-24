@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {UserAuth} from '../../interfaces/userAuth.interface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dialog-login',
@@ -13,7 +14,7 @@ export class DialogLoginComponent implements OnInit {
    * Constructor for DialogLoginComponent
    * @param _dialogRef
    */
-  constructor(private _dialogRef: MatDialogRef<DialogLoginComponent>) {
+  constructor(private _dialogRef: MatDialogRef<DialogLoginComponent>, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class DialogLoginComponent implements OnInit {
    */
   onCancel(): void{
     this._dialogRef.close();
+    this._router.navigate(['/home']);
   }
 
   /**

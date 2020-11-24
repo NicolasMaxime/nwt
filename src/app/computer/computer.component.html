@@ -1,4 +1,7 @@
-<section>
+<section *ngIf="!computers">
+  <h2 *ngIf="!computers">"Fetching configurations...</h2>
+</section>
+<section *ngIf="computers">
     <app-configuration-card [computer]="computer" *ngFor="let computer of toDisplay"></app-configuration-card>
   <mat-paginator  class="computer-paginator" [length]="computers.length" [pageSize]="pageSize" (page)="pageEvent($event)">
   </mat-paginator>
