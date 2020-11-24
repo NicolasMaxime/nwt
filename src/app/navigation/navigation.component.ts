@@ -10,11 +10,20 @@ import {Router} from "@angular/router";
 export class NavigationComponent implements OnInit {
 
   private _isConnected: boolean;
+
+  /**
+   * Constructor for NavifationComponent
+   * @param _auth
+   * @param _router
+   */
   constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Get is user is connected
+   */
   connected(): boolean{
     return this._auth.connected;
   }

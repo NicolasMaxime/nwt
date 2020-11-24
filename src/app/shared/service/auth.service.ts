@@ -19,6 +19,10 @@ export class AuthService {
   @Output('name')
   userName: EventEmitter<UserAuth> = new EventEmitter<UserAuth>();
 
+  /**
+   * Constructor for AuthService
+   * @param _http
+   */
   constructor(private _http: HttpClient) {
     this._userSubject = new BehaviorSubject<UserAuth>(JSON.parse(sessionStorage.getItem('user')));
     this._user = this._userSubject.asObservable();

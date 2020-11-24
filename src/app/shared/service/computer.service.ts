@@ -12,6 +12,10 @@ export class ComputerService {
 
   private _backendUrlConfig: any;
 
+  /**
+   * Constructor for ComputerService
+   * @param _http
+   */
   constructor(private _http : HttpClient) {
       this._backendUrlConfig = {};
 
@@ -24,6 +28,9 @@ export class ComputerService {
       )
   }
 
+  /**
+   * Getall computer
+   */
   getAll(): Observable<Computer[]>{
     return this._http.get<Computer[]>(this._backendUrlConfig.getAll).pipe(
           filter(_ => !!_),

@@ -31,27 +31,40 @@ export class ComputerComponent implements OnInit {
       });
   }
 
+  /**
+   * Getter for all computers
+   */
   get computers(): Computer[]{
     return this._computers;
   }
 
-  change($event: Event) {
-    console.log($event);
-  }
-
+  /**
+   * Event emitted when page is changer
+   * @param $event
+   */
   pageEvent($event: PageEvent){
     this._position = $event.pageIndex;
   }
 
+  /**
+   * get Number of item per page
+   */
   get pageSize(): number{
     return this._pageSize;
   }
 
+  /**
+   * Get the array to diplay in slider
+   */
   get toDisplay(): Computer[]{
     this.refresh();
     return this._toDisplay.data.shift();
   }
 
+  /**
+   * Set the array which will be displayed
+   * @private
+   */
   private _makeDisplay(): Computer[]{
     let start = this._position * this.pageSize;
     let ret = [];
@@ -64,6 +77,9 @@ export class ComputerComponent implements OnInit {
     return ret;
   }
 
+  /**
+   * Function to refresh the array
+   */
   refresh(){
     this._toDisplay.data.shift();
     this._toDisplay.data.push(this._makeDisplay());

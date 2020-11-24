@@ -16,10 +16,16 @@ export class UserComponent implements OnInit {
   }
 
 
+  /**
+   * Getter for user's name
+   */
   get name(): string{
     return this._user.login;
   }
 
+  /**
+   * Get user name from sesstionStorage
+   */
   ngOnInit(): void {
     this._user = JSON.parse(sessionStorage.getItem('user'));
   }

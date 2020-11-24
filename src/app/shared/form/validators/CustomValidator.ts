@@ -11,6 +11,10 @@ export class CustomValidator{
     return pass === verifPass ? null : {passValidator: true};
   }
 
+  /**
+   * Email validator
+   * @param control
+   */
   static emailValidator(control: AbstractControl): ValidationErrors | null {
     return /((\w|\d)(.(\w|\d))?)+@((\w|\d)+([-]|[.])?)\.\w{2,5}$/.test(control.value)?
       {emailValidator: true} : null;

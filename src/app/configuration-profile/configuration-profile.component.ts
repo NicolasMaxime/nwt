@@ -17,10 +17,19 @@ import {AuthService} from '../shared/service/auth.service';
 export class ConfigurationProfileComponent implements OnInit {
 
   private _user: User;
+  //form of user
   private _form: FormGroup;
   // Private reference to DialogLogin
   private _confirmDialog: MatDialogRef<DialogConfirmComponent>;
 
+  /**
+   * Constructor for ConfigurationProfile
+   * @param _route
+   * @param _userService
+   * @param _router
+   * @param _dialog
+   * @param _auth
+   */
   constructor(private _route: ActivatedRoute,
               private _userService: UserService,
               private _router: Router,
@@ -30,27 +39,39 @@ export class ConfigurationProfileComponent implements OnInit {
     this._form = this._buildForm();
   }
 
+  /**
+   * fetch one user to display
+   */
   ngOnInit(): void {
-    let login = this._route.snapshot.params['login']
+    let login = this._route.snapshot.params['login'];
     this._userService.getOne(login).subscribe(
       (_:User) => this._user = _,
       () => {
               alert('Vous n\'avez pas accès à cette page');
-              this._router.navigate(['/home'])
+              this._router.navigate(['/home']);
             },
     () => undefined
-    )
+    );
   }
 
+  /**
+   * getter for user
+   */
   get user(): User{
     return this._user;
   }
 
+  /**
+   * When cancel is pushed
+   */
   cancel() {
-
     this._router.navigate(['/user']);
   }
 
+  /**
+   * try to update when submit is pushed
+   * @param value
+   */
   submit(value: User) {
     let login = this._user.login;
     for (let tmp in value){
@@ -67,10 +88,16 @@ export class ConfigurationProfileComponent implements OnInit {
     )
   }
 
+  /**
+   * getter for form
+   */
   get form() : FormGroup{
     return this._form;
   }
 
+  /**
+   * When button delete is pushed
+   */
   deleteAccount() {
     this._confirmDialog = this._dialog.open(DialogConfirmComponent, {
       width: '400px',
@@ -87,6 +114,10 @@ export class ConfigurationProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * Building FormGroup + validator
+   * @private
+   */
   private _buildForm(): FormGroup {
     return new FormGroup({
       firstname: new FormControl('',),

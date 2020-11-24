@@ -24,6 +24,10 @@ export class UserService {
     Object.keys(environment.backend.endpoints).forEach(x => this._backendURL[x] = `${tmp}${environment.backend.endpoints[x]}`);
   }
 
+  /**
+   * Return HttpHeaders option
+   * @private
+   */
   private _option() : HttpHeaders{
     return new HttpHeaders(
         {
@@ -40,10 +44,19 @@ export class UserService {
     return this._http.get<User>(this._backendURL.getOne.replace(':login', login) , {headers: this._option()});
   }
 
+  /**
+   * update an user
+   * @param value
+   * @param login
+   */
   update(value: User, login: string): Observable<any> {
     return this._http.put<User>(this._backendURL.getOne.replace(':login', login), value, {headers: this._option()});
   }
 
+  /**
+   * delete an user
+   * @param login
+   */
   delete(login: string) {
     return this._http.delete<User>(this._backendURL.getOne.replace(':login', login), {headers: this._option()})
   }

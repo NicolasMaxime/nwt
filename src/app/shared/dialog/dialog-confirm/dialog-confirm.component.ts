@@ -11,6 +11,12 @@ import {DialogLoginComponent} from '../dialog-login/dialog-login.component';
 })
 export class DialogConfirmComponent implements OnInit {
 
+  /**
+   * COnstructor for DialogConfirmComponent
+   * @param _dialogRef
+   * @param _router
+   * @param _message
+   */
   constructor(private _dialogRef: MatDialogRef<DialogLoginComponent>,
               private _router: Router,
               @Inject(MAT_DIALOG_DATA) private _message: string) {
@@ -19,6 +25,9 @@ export class DialogConfirmComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Message gotten in params (to display)
+   */
   get message(): string{
     return this._message;
   }

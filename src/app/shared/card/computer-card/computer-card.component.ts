@@ -9,6 +9,9 @@ import {Computer} from "../../interfaces/computer.interface";
 export class ComputerCardComponent implements OnInit {
   private _computer: Computer;
 
+  /**
+   * Constructor for ComputerCard
+   */
   constructor() {
     this._computer = {} as Computer;
   }
@@ -16,10 +19,17 @@ export class ComputerCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * the computer to display
+   */
   get computer(): Computer{
     return this._computer;
   }
 
+  /**
+   * Let's set a computer, cause we need one
+   * @param value
+   */
   @Input('computer')
   set computer(value: Computer){
     this._computer =  value;
