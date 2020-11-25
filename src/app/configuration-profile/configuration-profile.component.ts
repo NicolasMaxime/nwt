@@ -45,7 +45,7 @@ export class ConfigurationProfileComponent implements OnInit {
     this._userService.getOne(login).subscribe(
       (_:User) => this._user = _,
       () => {
-              alert('Vous n\'avez pas accès à cette page');
+              alert('You can\'t  access this page !');
               this._router.navigate(['/home']);
             },
     () => undefined

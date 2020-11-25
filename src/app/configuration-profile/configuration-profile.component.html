@@ -18,7 +18,7 @@
           <mat-label >email</mat-label>
           <input matInput [placeholder]="user.email" formControlName="email" name="email">
           <mat-error *ngIf="form.get('email').hasError('email')">
-            L'adresse email doit être valide.
+            Email must be valid.
           </mat-error>
         </mat-form-field>
         <section class="buttonGroup">
