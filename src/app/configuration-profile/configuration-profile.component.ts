@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../shared/service/user.service';
 import {User} from '../shared/interfaces/user.interface';
 import {ActivatedRoute, Router} from '@angular/router';
-import {catchError} from 'rxjs/operators';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogLoginComponent} from '../shared/dialog/dialog-login/dialog-login.component';
 import {DialogConfirmComponent} from '../shared/dialog/dialog-confirm/dialog-confirm.component';
 import {AuthService} from '../shared/service/auth.service';
 
