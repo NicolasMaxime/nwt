@@ -12,12 +12,12 @@ The client need to be paired with a back end server : https://github.com/Nicolas
 
 ## What was done :
 
-Sign In,
-Login,
-Displaying configuration cards,
-Selecting thoose as favorites,
-Web chat,
-Users Settings,
+Sign In.
+Login.
+Displaying configuration cards.
+Selecting thoose as favorites.
+Web chat.
+Users Settings.
 Aministrator's rights.
 
 ## What's still needed : 
