@@ -25,8 +25,9 @@
       <a mat-button title="Edit">
         <mat-icon>favorite</mat-icon>
       </a>
-      <a mat-button title="Edit">
-        <mat-icon>start</mat-icon>
+      <a *ngIf="connected" mat-button title="Edit" (click)="onFavorite()">
+        <mat-icon *ngIf="isfavorite" color="warn">start</mat-icon>
+        <mat-icon *ngIf="!isfavorite">start</mat-icon>
       </a>
     </div>
   </mat-card-content>

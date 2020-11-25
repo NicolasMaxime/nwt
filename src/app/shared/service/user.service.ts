@@ -59,4 +59,13 @@ export class UserService {
   delete(login: string) {
     return this._http.delete<User>(this._backendURL.getOne.replace(':login', login), {headers: this._option()})
   }
+
+  /**
+   * update an user
+   * @param value
+   * @param login
+   */
+  updateFavorite(value: User, login: string): Observable<any> {
+    return this._http.put<User>(this._backendURL.upfavorite.replace(':login', login), value, {headers: this._option()});
+  }
 }

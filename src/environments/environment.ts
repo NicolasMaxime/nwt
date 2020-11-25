@@ -12,6 +12,7 @@ export const environment = {
       verify: '/user/verify',
       createUser: '/user/create',
       getOne: '/user/:login',
+      upfavorite: '/favorite/:login',
     },
     endpointsConfig: {
       getAll: '/configuration/all',

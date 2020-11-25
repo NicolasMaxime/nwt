@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Computer} from "../../interfaces/computer.interface";
 
 @Component({
@@ -8,12 +8,16 @@ import {Computer} from "../../interfaces/computer.interface";
 })
 export class ComputerCardComponent implements OnInit {
   private _computer: Computer;
+  private _favorite$: EventEmitter<Computer>
+  private _favorite: boolean;
 
   /**
    * Constructor for ComputerCard
    */
   constructor() {
     this._computer = {} as Computer;
+    this._favorite$ = new EventEmitter<Computer>();
+    this._favorite = false;
   }
 
   ngOnInit(): void {
@@ -35,4 +39,26 @@ export class ComputerCardComponent implements OnInit {
     this._computer =  value;
   }
 
+  @Output('favorite')
+  get favorite(): EventEmitter<any>{
+    return this._favorite$;
+  }
+
+  onFavorite(){
+    this._favorite$.emit(this._computer);
+    this._favorite = !this._favorite;
+  }
+
+  @Input('isfavorite')
+  set isfavorite(value: boolean) {
+    this._favorite = value;
+  }
+
+  get isfavorite(): boolean{
+    return this._favorite;
+  }
+
+  get connected(): boolean{
+    return !! sessionStorage.getItem('user');
+  }
 }
