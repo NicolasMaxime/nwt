@@ -49,7 +49,7 @@ export class ComputerCardComponent implements OnInit {
     this._favorite = !this._favorite;
   }
 
-  @Input('isfavorite')
+  @Input('isFavorite')
   set isfavorite(value: boolean) {
     this._favorite = value;
   }

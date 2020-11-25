@@ -37,11 +37,6 @@ import { SocketIoModule} from 'ngx-socket-io';
 import {MatTableModule} from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import {ChatComponent} from './chat/chat.component';
-import {ComponentsComponent} from './components/components.component';
-import {ClockPipe} from './shared/pipes/clock.pipe';
-import { DialogProcessorComponent } from './shared/dialog/dialog-processor/dialog-processor/dialog-processor.component';
-import { FormProcessorComponent } from './shared/form/form-processor/form-processor/form-processor.component';
-import { UpdateProcessorComponent } from './components/update-processor/update-processor.component';
 import { DialogChatComponent } from './shared/dialog/dialog-chat/dialog-chat/dialog-chat.component';
 import {environment} from '../environments/environment';
 
@@ -65,11 +60,6 @@ import {environment} from '../environments/environment';
     ConfigurationProfileComponent,
     DialogConfirmComponent,
     ChatComponent,
-    ClockPipe,
-    ComponentsComponent,
-    DialogProcessorComponent,
-    FormProcessorComponent,
-    UpdateProcessorComponent,
     DialogChatComponent,
   ],
   imports: [

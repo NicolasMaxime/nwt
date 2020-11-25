@@ -2,7 +2,7 @@
   <h2 *ngIf="!computers">"Fetching configurations...</h2>
 </section>
 <section *ngIf="computers">
-    <app-configuration-card  (favorite)="addFavorite($event)" [computer]="computer" *ngFor="let computer of toDisplay"></app-configuration-card>
+    <app-configuration-card [isFavorite]="isFavorite(computer)" (favorite)="addFavorite($event)" [computer]="computer" *ngFor="let computer of toDisplay"></app-configuration-card>
   <mat-paginator  class="computer-paginator" [length]="computers.length" [pageSize]="pageSize" (page)="pageEvent($event)">
   </mat-paginator>
 </section>

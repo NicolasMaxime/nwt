@@ -97,11 +97,10 @@ export class ComputerComponent implements OnInit {
   }
 
   addFavorite($event: Computer) {
-    console.log(this._user);
     if (!this._user.favorites){
       this._user.favorites = [] as Computer[];
     }
-    if (!this._user.favorites.find(_ => _ == $event)) {
+    if (!this._user.favorites.find(_ => _.name === $event.name)) {
       this._user.favorites.push($event);
     }else {
       this._user.favorites.splice(this._user.favorites.indexOf($event), 1);
@@ -113,7 +112,7 @@ export class ComputerComponent implements OnInit {
   }
 
   isFavorite(computer: Computer) {
-    if (this._user.favorites.find(_ => _ == computer))
+    if (this._user.favorites && this._user.favorites.find(_ => _.name === computer.name))
       return true;
     return false;
   }
