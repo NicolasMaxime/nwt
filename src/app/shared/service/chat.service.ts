@@ -7,8 +7,12 @@ import {Observable} from 'rxjs';
 })
 export class ChatService {
 
+  _messages: string[] = [];
   constructor(private socket: Socket) {
+  }
 
+  get messages(): string[] {
+    return this._messages;
   }
 
   sendChat(message): void{
@@ -23,4 +27,11 @@ export class ChatService {
     return this.socket.fromEvent('users');
   }
 
+  disconnect(): void {
+    this.socket.disconnect();
+  }
+
+  connect(): void {
+    this.socket.connect();
+  }
 }

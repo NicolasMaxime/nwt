@@ -7,7 +7,9 @@ import {
 import decode from 'jwt-decode';
 import {AuthService} from '../service/auth.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RoleGuardService implements CanActivate {
   constructor(public _authService: AuthService, public _router: Router) {}
 
