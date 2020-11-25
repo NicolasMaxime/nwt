@@ -1,0 +1,60 @@
+.chat-card {
+  max-width: 350px;
+  background-color: #2a373f;
+}
+
+.chat-card2 {
+  background-color: white;
+}
+.chathead-card {
+  max-width: 350px;
+  background-color: white;
+  color: #556369;
+}
+
+.chat-list {
+  height: 400px;
+}
+
+.chat-textarea{
+  background-color: white;
+  border-radius: 5px;
+}
+
+textarea {
+  width: calc(100% - 20px);
+  margin-left: 10px;
+  background-color: #fff;
+  font-size: 1.2em;
+  resize: none;
+  border: none;
+}
+
+.message {
+  margin: 10px 0;
+}
+
+.messages {
+  width: 330px;
+  height: 200px;
+  overflow-y: scroll;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+
+.field {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+#message {
+  width: 200px;
+}
+
+input {
+  padding: 5px;
+  font-size: 12px;
+}
+
+

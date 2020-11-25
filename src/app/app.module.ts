@@ -22,17 +22,29 @@ import { InscriptionComponent } from './login/inscription/inscription.component'
 import {JwtInterceptor} from './shared/interceptor/jwt.interceptor';
 import { HeadBarComponent } from './head-bar/head-bar.component';
 import { UserComponent } from './user/user.component';
-import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ComputerComponent } from './computer/computer.component';
 import { ComputerCardComponent } from './shared/card/computer-card/computer-card.component';
-import {MatCardModule} from "@angular/material/card";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatMenuModule} from "@angular/material/menu";
+import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 import { AdminComponent } from './admin/admin.component';
 import {RoleGuardService} from './shared/guards/role-guard.service';
 import { ConfigurationProfileComponent } from './configuration-profile/configuration-profile.component';
 import { DialogConfirmComponent } from './shared/dialog/dialog-confirm/dialog-confirm.component';
+import { SocketIoModule} from 'ngx-socket-io';
+import {MatTableModule} from '@angular/material/table';
+import {MatListModule} from '@angular/material/list';
+import {ChatComponent} from './chat/chat.component';
+import {ComponentsComponent} from './components/components.component';
+import {ClockPipe} from './shared/pipes/clock.pipe';
+import { DialogProcessorComponent } from './shared/dialog/dialog-processor/dialog-processor/dialog-processor.component';
+import { FormProcessorComponent } from './shared/form/form-processor/form-processor/form-processor.component';
+import { UpdateProcessorComponent } from './components/update-processor/update-processor.component';
+import { DialogChatComponent } from './shared/dialog/dialog-chat/dialog-chat/dialog-chat.component';
+import {environment} from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +64,13 @@ import { DialogConfirmComponent } from './shared/dialog/dialog-confirm/dialog-co
     AdminComponent,
     ConfigurationProfileComponent,
     DialogConfirmComponent,
+    ChatComponent,
+    ClockPipe,
+    ComponentsComponent,
+    DialogProcessorComponent,
+    FormProcessorComponent,
+    UpdateProcessorComponent,
+    DialogChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +89,9 @@ import { DialogConfirmComponent } from './shared/dialog/dialog-confirm/dialog-co
     MatCardModule,
     MatPaginatorModule,
     MatMenuModule,
+    SocketIoModule.forRoot(environment.backend.SocketIOConfig),
+    MatTableModule,
+    MatListModule,
   ],
   providers: [    {
       provide: HTTP_INTERCEPTORS,

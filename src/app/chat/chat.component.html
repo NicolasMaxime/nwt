@@ -1,0 +1,32 @@
+<mat-card class="chat-card">
+  <mat-card-header >
+    <mat-card-title>LOS Chat</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-card class="chat-card2" >
+      <mat-card-content class="chathead-card">
+        There are currently <strong>{{users}}</strong> users online. Start chatting!
+      </mat-card-content>
+    </mat-card>
+
+
+    <mat-list class="chat-list">
+      <mat-list-item *ngFor="let message of messages">
+        {{ message }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <mat-toolbar class="chat-textarea">
+      <textarea spellcheck="true" autoComplete="true" autocorrect="true" rows="1" class="chat-input" [(ngModel)]="message" placeholder="type message..." (keyup.enter)="addChat()"></textarea>
+
+      <button mat-icon-button color = primary (click)="addChat()">
+        <mat-icon>send</mat-icon>
+      </button>
+
+    </mat-toolbar>
+  </mat-card-footer>
+
+</mat-card>

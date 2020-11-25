@@ -18,6 +18,10 @@ export const environment = {
       getAll: '/configuration/all',
       getOne: '/configuration/:id',
     },
+    SocketIOConfig: {
+      url: 'localhost:3000',
+      options: {},
+    }
   }
 };
 

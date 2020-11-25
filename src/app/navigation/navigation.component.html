@@ -12,9 +12,14 @@
     <mat-icon>person</mat-icon>
     <mat-label>Dashboard</mat-label>
   </button>
+  <button mat-menu-item *ngIf="connected()" class="profilebutton" matTooltip="LOS Live Chat"(click)="showChat()">
+    <mat-icon>chat</mat-icon>
+    <mat-label>Chat</mat-label>
+  </button>
   <button mat-menu-item *ngIf="connected()" class="profilebutton" (click)="disconnect()">
     <mat-icon>login</mat-icon>
     <mat-label>Logout</mat-label>
   </button>
+
 </mat-menu>
 </div>
