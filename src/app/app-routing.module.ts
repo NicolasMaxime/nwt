@@ -7,6 +7,7 @@ import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
 import {RoleGuardService} from './shared/guards/role-guard.service';
 import {ConfigurationProfileComponent} from './configuration-profile/configuration-profile.component';
+import {FavoritesComponent} from "./favorites/favorites.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'inscription', component: InscriptionComponent},
   {path: 'user', component: UserComponent},
   {path: 'admin', component: AdminComponent, canActivate: [RoleGuardService]},
-  {path: 'options/:login', component: ConfigurationProfileComponent}
+  {path: 'options/:login', component: ConfigurationProfileComponent},
+  {path: 'favorites', component: FavoritesComponent}
 ];
 
 @NgModule({

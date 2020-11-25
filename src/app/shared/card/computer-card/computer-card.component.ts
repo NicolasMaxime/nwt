@@ -37,6 +37,8 @@ export class ComputerCardComponent implements OnInit {
   @Input('computer')
   set computer(value: Computer){
     this._computer =  value;
+    if (!this._computer.photo)
+      this._computer.photo = '../assets/ORDINNATEUR.jpg'
   }
 
   @Output('favorite')

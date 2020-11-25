@@ -7,15 +7,16 @@ import {UserService} from "../shared/service/user.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
-export class AdminComponent implements OnInit {
+export class FavoritesComponent implements OnInit {
 
   private _computers: Computer[];
   private _toDisplay: MatTableDataSource<Computer[]>;
   private _user: User;
+  private _hasFavorite;
   private _login: string;
   private _position: number;
   private _pageSize: number;
@@ -26,12 +27,17 @@ export class AdminComponent implements OnInit {
     this._pageSize = 6;
     this._toDisplay = new MatTableDataSource<Computer[]>();
     this._user = {} as User
+    this._hasFavorite = false;
   }
 
   ngOnInit(): void {
     this._login = JSON.parse(sessionStorage.getItem('user')).login;
     if (!!this._login){
-      this._userService.getOne(this._login).subscribe(_ => this._user = _);
+      this._userService.getOne(this._login).subscribe(_ => {
+        this._user = _;
+        this._computers = this._user.favorites;
+        this._hasFavorite = !! this._computers;
+      });
     }
   }
 
@@ -40,6 +46,14 @@ export class AdminComponent implements OnInit {
    */
   get computers(): Computer[]{
     return this._computers;
+  }
+
+
+  /**
+   * get if there are any favorites
+   */
+  get hasFavorite():boolean{
+      return this._hasFavorite;
   }
 
   /**
@@ -98,6 +112,8 @@ export class AdminComponent implements OnInit {
     }else {
       this._user.favorites.splice(this._user.favorites.indexOf($event), 1);
     }
+    this._computers = this._user.favorites;
+    this._hasFavorite = this._computers.length == 0 ? false : true;
     delete this._user['id'];
     delete this._user['_id'];
     delete this._user['login'];
@@ -109,5 +125,4 @@ export class AdminComponent implements OnInit {
       return true;
     return false;
   }
-
 }

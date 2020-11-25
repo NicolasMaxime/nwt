@@ -1,5 +1,5 @@
 <section *ngIf="!computers">
-  <h2 *ngIf="!computers">"Fetching configurations...</h2>
+  <h2 *ngIf="!computers">Fetching configurations...</h2>
 </section>
 <section *ngIf="computers">
     <app-configuration-card [isFavorite]="isFavorite(computer)" (favorite)="addFavorite($event)" [computer]="computer" *ngFor="let computer of toDisplay"></app-configuration-card>

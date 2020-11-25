@@ -55,4 +55,5 @@ h2{
 
 .followed{
   background-image: url(src/assets/ICON-FAVORI.jpg);
+  background-size: 170px;
 }

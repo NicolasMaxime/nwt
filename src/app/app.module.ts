@@ -39,6 +39,7 @@ import {MatListModule} from '@angular/material/list';
 import {ChatComponent} from './chat/chat.component';
 import { DialogChatComponent } from './shared/dialog/dialog-chat/dialog-chat/dialog-chat.component';
 import {environment} from '../environments/environment';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import {environment} from '../environments/environment';
     DialogConfirmComponent,
     ChatComponent,
     DialogChatComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,7 @@ import {environment} from '../environments/environment';
     MatTableModule,
     MatListModule,
   ],
-  providers: [    {
+  providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
